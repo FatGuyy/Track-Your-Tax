@@ -1,0 +1,123 @@
+CentralGov Component Styling
+
+.walletAddress {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accountDisplay,
+.balanceDisplay {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.allocateFunds,
+.transferFunds {
+  margin-top: 30px;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+/* CentralGov Component Styling */
+
+.walletAddress {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+button {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.accountDisplay,
+.balanceDisplay {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.allocateFunds,
+.transferFunds {
+  margin-top: 30px;
+}
+
+h4 {
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.allocateFunds input::placeholder,
+.transferFunds input::placeholder {
+  color: #aaa;
+}
+
+.allocateFunds input:focus,
+.transferFunds input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+
+button.allocateFunds,
+button.transferFunds {
+  background-color: #28a745;
+}
+
+button.allocateFunds:hover,
+button.transferFunds:hover {
+  background-color: #218838;
+}
