@@ -6,5 +6,6 @@ module.exports = async function (deployer) {
   console.log(
     "FundMonitor contract deployed to: ",
     fundMonitorInstance.address
+
   );
 };
