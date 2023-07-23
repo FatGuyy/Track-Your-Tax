@@ -3,7 +3,6 @@
 /* Styling for the container */
 .container {
   max-width: 800px;
-  
   margin: 10px auto;
   padding: 20px 30px 20px 20px;
   background-color: #A6E3E9 ;/*#2b6777;*/
@@ -59,7 +58,6 @@ input[type="text"] {
   border: 1px solid wheat;
   border-radius: 4px;
 }
-
 .allocateFunds h4,
 .transferFunds h4 {
   margin-bottom: 10px;
