@@ -82,22 +82,6 @@ contract("FundMonitor", (accounts) => {
     assert.equal(allocatedFundsInEther, '1', 'Incorrect allocated funds value');
   });
 
-  // it('should revert if an organization with lower hierarchy tries to allocate funds', async () => {
-  //   const fromAddress = accounts[2]; // Replace with the address of an organization with lower hierarchy
-  //   const toAddress = accounts[1]; // Replace with the address of an organization with higher hierarchy
-  //   const value = web3.utils.toWei('1', 'ether'); // Replace '1' with the amount of funds to allocate
-
-  //   // Attempt to call the allocateFunds function from an organization with lower hierarchy
-  //   try {
-  //     await fundMonitor.allocateFunds(fromAddress, toAddress, value);
-  //     assert.fail('Expected revert not received');
-  //   } catch (error) {
-  //     const expectedError = 'You can only set hierarchy for lower organizations.';
-  //     assert(error.message.includes(expectedError), `Expected error: "${expectedError}"`);
-  //   }
-  // });
-
-
   // Test the transferFunds function
   it("should transfer funds to the specified address", async () => {
     await fundMonitor.setCentralGov(centralGov, { from: owner });
