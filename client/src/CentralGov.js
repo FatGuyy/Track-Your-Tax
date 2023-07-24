@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
-import {abi} from "./abi.js";
+import Web3 from "web3";
+import abi from "./abi.js";
 import "./CentralGov.css";
 
 const CentralGov = () => {
@@ -40,9 +40,9 @@ const CentralGov = () => {
 
   const getUserBalance = async (address) => {
     try {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const balance = await provider.getBalance(address);
-      setUserBalance(ethers.formatUnits(balance));
+      const web3 = new Web3(window.ethereum);
+      const balance = await web3.eth.getBalance(address);
+      setUserBalance(web3.utils.fromWei(balance));
     } catch (error) {
       console.error("Error fetching user balance", error);
     }
@@ -50,10 +50,9 @@ const CentralGov = () => {
 
   const initializeFundMonitorContract = async (account) => {
     if (account) {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
+      const web3 = new Web3(window.ethereum);
       const contractAddress = "0x4711CAB8cc28191F16D40eA850b7677BA0cb6c8e";
-      const contract = new ethers.Contract(contractAddress, abi, signer);
+      const contract = new web3.eth.Contract(abi, contractAddress);
       setFundMonitorContract(contract);
     }
   };
@@ -71,12 +70,15 @@ const CentralGov = () => {
         return;
       }
 
-      const transaction = await fundMonitorContract.allocateFunds(
-        fromAddress,
-        toAddress,
-        ethers.parseEther(amount)
-      );
-      await transaction.wait();
+      const web3 = new Web3(window.ethereum);
+      const transaction = await fundMonitorContract.methods
+        .allocateFunds(fromAddress, toAddress)
+        .send({
+          from: defaultAccount,
+          value: web3.utils.toWei(amount.toString(), "ether"),
+        });
+
+      console.log("Transaction hash:", transaction.transactionHash);
     } catch (error) {
       console.error("error allocating funds", error);
     }
@@ -92,16 +94,21 @@ const CentralGov = () => {
         console.log("Please enter all required parameters.");
         return;
       }
-      console.log(amount);
-      const transaction = await fundMonitorContract.transferFunds(
-        toAddress,
-        ethers.parseEther(amount)
-      );
-      await transaction.wait();
+
+      const web3 = new Web3(window.ethereum);
+      const transaction = await fundMonitorContract.methods
+        .transferFunds(toAddress)
+        .send({
+          from: defaultAccount,
+          value: web3.utils.toWei(amount.toString(), "ether"),
+        });
+
+      console.log("Transaction hash:", transaction.transactionHash);
     } catch (error) {
       console.error("Error transferring funds: ", error);
     }
   };
+
 
   return (
     <>
